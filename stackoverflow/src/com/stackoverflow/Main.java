@@ -1,6 +1,5 @@
 package com.stackoverflow;
 
-
 import com.stackoverflow.models.User;
 
 public class Main{
