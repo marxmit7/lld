@@ -1,7 +1,9 @@
-## Stackoverflow 
+Low Level Design:-
 
-```
-Go to stackoverflow directory
-1. javac -d target src/**/*.java
-2. java -cp target com.stackoverflow.Main
-```
+Think about 
+- Actors : different types of users
+- User Activities and Use Cases : different types of activities that users will be doing
+- Entities : core components that will be working together
+
+Actors and Entities becomes Classes 
+User Activities and Use Cases become methods or properties
