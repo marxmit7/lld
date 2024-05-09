@@ -5,6 +5,7 @@ import com.bookmyshow.models.Movie;
 import com.bookmyshow.models.Show;
 import com.bookmyshow.models.Customer;
 import java.util.ArrayList;
+
 public class TicketBookingService {
     
     public List<Movie> searchMovies(String name){

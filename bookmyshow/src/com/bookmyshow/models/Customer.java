@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Customer extends Person{
 
+    private String customerId;
+
     private List<Booking> bookings;
 
     private boolean makeBooking(Booking booking){
