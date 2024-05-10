@@ -1,5 +1,6 @@
 
 ![alt text]("design diagram.png")
+
 ![alt text]("class diagram.png")
 
 Use Case of Pattern Singleton Method
