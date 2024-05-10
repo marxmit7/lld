@@ -1,6 +1,6 @@
 
-![alt text](design diagram.png)
-![alt text](class diagram.png)
+![alt text]("design diagram.png")
+![alt text]("class diagram.png")
 
 Use Case of Pattern Singleton Method
 - Database Connections: In applications where creating and managing database connections is an expensive operation, a Singleton can be used to maintain a single database connection throughout the application.
