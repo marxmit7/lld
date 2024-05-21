@@ -3,7 +3,7 @@ package cache.src.com.cache;
 
 import java.util.HashMap;
 import java.util.Map;
-public class LRUEvictionPolicy<K,V> implements EvictionPolicy<K>{
+public class LRUEvictionPolicy<K,V> implements EvictionPolicy<K,V>{
 
     private Integer capacity;
     private Map<K, Node<K,V>> map;
@@ -59,6 +59,7 @@ public class LRUEvictionPolicy<K,V> implements EvictionPolicy<K>{
         return nodeToEvict.key;
     }
 
+    @Override
     public V get(K key){
 
         Node<K, V> node = map.get(key);
@@ -71,6 +72,7 @@ public class LRUEvictionPolicy<K,V> implements EvictionPolicy<K>{
 
     }
 
+    @Override
     public void put(K key, V value){
 
         Node<K,V> node = map.get(key);

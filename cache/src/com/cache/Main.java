@@ -7,7 +7,7 @@ public class Main{
 
 
         for(Integer i=0;i<2*capacity;i++){
-            cache.put(i.toString(),(new Integer((i*i))).toString());
+            cache.put(i.toString(),((Integer)(i*i)).toString());
         }
 
         for(Integer i=0;i<2*capacity;i++){
