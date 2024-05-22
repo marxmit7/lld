@@ -9,7 +9,7 @@ public class TextMessage extends Message{
     public void setContent(String content){
         this.content = content;
     }
-    public void getContent(){
+    public String getContent(){
         return content;
     }
 }
