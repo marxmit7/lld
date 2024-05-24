@@ -56,5 +56,4 @@ public class Main {
         int randomIndex = RANDOM.nextInt(messageTypes.length);
         return messageTypes[randomIndex];
     }
-
 }
