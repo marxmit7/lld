@@ -17,5 +17,6 @@ public class ChatFactory{
             default:
                 break;
         }
+		return null;
     }
 }
