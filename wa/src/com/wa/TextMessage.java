@@ -6,9 +6,11 @@ public class TextMessage extends Message{
 
     public TextMessage(){};
 
-    public void setContent(String content){
+    public void setContent(String content, String sender){
         this.content = content;
+        sendByUserId=sender;
     }
+    
     public String getContent(){
         return content;
     }

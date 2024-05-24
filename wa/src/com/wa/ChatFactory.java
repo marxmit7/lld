@@ -2,7 +2,7 @@ package wa.src.com.wa;
 
 public class ChatFactory{
 
-    public static Chat getChat(String type, String chatId, String... userIds){
+    public static Chat createChat(String type, String chatId, String... userIds){
 
         switch (type) {
             case "one-to-one":

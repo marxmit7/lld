@@ -18,7 +18,7 @@ public class OneToOneChat extends Chat{
 
     @Override
     public void addParticipant(String u1){
-
        System.out.println("cannot add extra participants");
     }
+    
 }

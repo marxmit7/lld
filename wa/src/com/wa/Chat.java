@@ -19,5 +19,9 @@ public abstract class Chat{
         return chatId;
     }
 
+    public List<Message> getMessages(){
+        return messages;
+    }
+
     
 }

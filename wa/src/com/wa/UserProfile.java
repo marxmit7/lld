@@ -23,5 +23,9 @@ public class UserProfile{
         this.profilePicture = profilePicture;
     }
 
+    public String getName(){
+        return name;
+    }
+
 
 }
