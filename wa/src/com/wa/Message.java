@@ -5,6 +5,7 @@ public abstract class Message{
     private String sentAt;
     private String readAt;
     private String receivedAt;
+    private String content;
     protected String sendByUserId;
 
 }

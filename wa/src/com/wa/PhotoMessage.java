@@ -1,10 +1,16 @@
 package wa.src.com.wa;
 
 public class PhotoMessage extends Message{
-    private String photoContent;
+    private String content;
+
     public PhotoMessage(){};
 
-    public void setPhotoContent(String photoContent){
-        this.photoContent = photoContent;
+    public void setContent(String content, String sender){
+        this.content = content;
+        sendByUserId=sender;
+    }
+    
+    public String getContent(){
+        return content;
     }
 }
