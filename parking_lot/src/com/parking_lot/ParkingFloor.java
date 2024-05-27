@@ -13,6 +13,7 @@ public class ParkingFloor implements Observable{
 
     public ParkingFloor(String floorNumber, Map<ParkingSpotType,Integer> capacity){
         this.floorNumber = floorNumber;
+        this.observerList = new ArrayList<>();
         intializeFloor(capacity);
     }
 
@@ -22,11 +23,11 @@ public class ParkingFloor implements Observable{
         for(Map.Entry<ParkingSpotType, Integer> entry: capacity.entrySet()){
             for(int i=0;i<entry.getValue();i++){
                 ParkingSpot parkingSpot = new ParkingSpot(true, entry.getKey(),i);
-                this.parkingSpotMap.getOrDefault(entry.getKey(),new ArrayList<ParkingSpot>()).add(parkingSpot);
-                this.parkingSpotMap.put(entry.getKey(),this.parkingSpotMap.get(entry.getKey()));       
+                List<ParkingSpot> parkingSpotsList= this.parkingSpotMap.getOrDefault(entry.getKey(),new ArrayList<>());
+                parkingSpotsList.add(parkingSpot);
+                this.parkingSpotMap.put(entry.getKey(),parkingSpotsList);       
             }
         }
-
         notifyObserver();
 
     }
@@ -75,6 +76,7 @@ public class ParkingFloor implements Observable{
     @Override
     public void addObserver(Observer observer){
         this.observerList.add(observer);
+
     }
 
     @Override 
@@ -84,7 +86,7 @@ public class ParkingFloor implements Observable{
 
     @Override 
     public void notifyObserver(){
-        for(Observer observer : observerList){
+        for(Observer observer : this.observerList){
             observer.update(this);
         }
     }

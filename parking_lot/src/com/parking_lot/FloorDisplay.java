@@ -29,8 +29,6 @@ public class FloorDisplay implements Display, Observer {
         for(ParkingSpotType key: ParkingSpotType.values()){
             this.availableSpots.put(key, parkingFloor.getFreeSpots(key));
         }
-
         display();
-
     }
 }
