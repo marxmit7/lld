@@ -8,14 +8,11 @@ import java.util.ArrayList;
 public class ParkingFloor implements Observable{
 
     private String floorNumber;
-    private FloorDisplay floorDisplay;
     private Map<ParkingSpotType, List<ParkingSpot>> parkingSpotMap;
     private List<Observer> observerList;
 
     public ParkingFloor(String floorNumber, Map<ParkingSpotType,Integer> capacity){
         this.floorNumber = floorNumber;
-        this.floorDisplay = new FloorDisplay(floorNumber);
-
         intializeFloor(capacity);
     }
 
@@ -31,6 +28,44 @@ public class ParkingFloor implements Observable{
         }
     }
 
+    public synchronized boolean parkVehicle(Vehicle vehicle, ParkingSpotType parkingSpotType){
+
+        for(ParkingSpot parkingSpot: this.parkingSpotMap.getOrDefault(parkingSpotType,new ArrayList<>())){
+            if(parkingSpot.getParkingSpotType()==parkingSpotType && parkingSpot.isFree()){
+                parkingSpot.setIsFree(false);
+                parkingSpot.setVehicle(vehicle);
+                notifyObserver();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public synchronized boolean freeSpot(int spotId){
+
+        for(List<ParkingSpot> parkingSpotList: parkingSpotMap.values()){
+            for(ParkingSpot parkingSpot: parkingSpotList){
+                if(parkingSpot.getSpotId()==spotId){
+                    parkingSpot.makeFree();
+                    notifyObserver();
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    protected synchronized int getFreeSpots(ParkingSpotType parkingSpotType){
+
+        int count = 0;
+        for(ParkingSpot parkingSpot: parkingSpotMap.getOrDefault(parkingSpotType, new ArrayList<>())){
+            if(parkingSpot.isFree())count++;
+        }
+        return count;
+    }
+
+
     @Override
     public void addObserver(Observer observer){
         this.observerList.add(observer);
@@ -43,11 +78,9 @@ public class ParkingFloor implements Observable{
 
     @Override 
     public void notifyObserver(){
-
         for(Observer observer : observerList){
             observer.update(this);
         }
-
     }
     
 }
