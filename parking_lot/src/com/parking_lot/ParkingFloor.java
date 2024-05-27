@@ -26,6 +26,12 @@ public class ParkingFloor implements Observable{
                 this.parkingSpotMap.put(entry.getKey(),this.parkingSpotMap.get(entry.getKey()));       
             }
         }
+
+        notifyObserver();
+
+    }
+    public String getFloorNumber(){
+        return this.floorNumber;
     }
 
     public synchronized boolean parkVehicle(Vehicle vehicle, ParkingSpotType parkingSpotType){
