@@ -6,15 +6,33 @@ public class Main{
 
     public static void main(String[] args){
 
+        // testNormalRateLimiter();
+
+        testAnnoatedRateLimiter();
+
+    }
+
+    private static void testAnnoatedRateLimiter(){
+
+        DummyService dummyService  = (DummyService)RateLimiterProxy.getInstance(new DummyServiceImpl());
+
+        for(int i=0;i<200;i++){
+            dummyService.rateLimitedMethod(Integer.toString(i));
+        }
+        
+    }
+
+    private static void testNormalRateLimiter(){
         RateLimiterManager rateLimiterManager = RateLimiterManager.getInstance();
-        rateLimiterManager.createRateLimiter("simple", 100, 6);
-        RateLimiter decoratedRateLimiter = new RateLimiterDecorator(rateLimiterManager.getRateLimiter());
 
-
-        String clientId = "c1";
+        String clientId = "c1";        
+        RateLimiter decoratedRateLimiter = new RateLimiterDecorator(rateLimiterManager.createRateLimiter(clientId,"simple", 100, 6));
 
         for(int i=0;i<200;i++){
             decoratedRateLimiter.isAllowed(clientId);
         }
+
     }
+
+ 
 }

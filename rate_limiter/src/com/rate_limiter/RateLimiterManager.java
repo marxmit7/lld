@@ -1,8 +1,11 @@
 package rate_limiter.src.com.rate_limiter;
 
+import java.util.Map;
+import java.util.HashMap;
+
 public class RateLimiterManager{
     private static RateLimiterManager instance ;
-    private RateLimiter rateLimiter;
+    private Map<String, RateLimiter> rateLimiterMap = new HashMap<>();
 
     private RateLimiterManager(){};
 
@@ -13,11 +16,7 @@ public class RateLimiterManager{
         return instance;
     }
 
-    public void createRateLimiter(String type, int maxRequests, long timeWindowMillis){
-        this.rateLimiter = RateLimiterFactory.getRateLimiter(type, maxRequests, timeWindowMillis);
-    }
-
-    public RateLimiter getRateLimiter(){
-        return rateLimiter;
+    public RateLimiter createRateLimiter(String clientId,String type, int maxRequests, long timeWindowMillis){
+       return this.rateLimiterMap.computeIfAbsent(clientId, id -> RateLimiterFactory.getRateLimiter(type, maxRequests, timeWindowMillis));
     }
 }
