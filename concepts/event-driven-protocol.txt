@@ -1,0 +1,12 @@
+The general subscription models for an API are the following 6:
+
+push-based (server-initiated)
+pull-based (client-initiated)
+The popular protocols for an event-driven API are the following 6:
+
+Protocol	    Description	                                                                                                                                                                                    Use Cases	                                                            Subscription Model
+Webhook	        HTTP-based callback function that allows lightweight, event-driven infrequent communication between APIs	                                                                                    trigger automation workflows	                                        push-based
+WebSub	        communication channel for frequent messages between web content publishers and subscribers based on HTTP webhooks	                                                                            news aggregator platforms, stock exchanges, and air traffic networks	push-based
+WebSockets	    provides full-duplex communication channels over a single TCP connection with lower overhead than half-duplex alternatives such as HTTP polling	                                                financial tickers, location-based apps, and chat solutions	            pull-based
+SSE	            lightweight and subscribe-only protocol for event-driven data streams	live score updates	pull-based
+MQTT	        protocol for streaming data between devices with limited CPU power and low bandwidth networks	                                                                                                 Internet of Things	                                                    pull-based
