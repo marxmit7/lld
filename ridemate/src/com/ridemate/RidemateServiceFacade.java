@@ -9,6 +9,10 @@ import ridemate.src.com.ridemate.services.MatchingService;
 
 import java.util.*;
 
+import org.omg.CORBA.Request;
+
+import javafx.util.Pair;
+
 public class RidemateServiceFacade {
     private MatchingService matchingService;
     private Database database;
@@ -32,10 +36,14 @@ public class RidemateServiceFacade {
         return matchingService.findMatch(rideRequestA, rideRequestB);
     }
 
+    public List<Match> findMatches(List<RideRequest> rideRequests, double threshold){
+        return matchingService.findMatches(rideRequests, threshold);
+    }
+
     public List<User> getAllRegisteredUser(){
         return userManager.getAllRegisteredUser();
     }
-    
+
     public User getRegisteredUserById(String userId){
         return userManager.getRegisteredUserById(userId);
     }
