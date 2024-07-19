@@ -27,7 +27,7 @@ public class MargheritaBuilder implements PizzaBuilder{
     public Margherita build(){
         return new Margherita(this.dough, this.sauce,this.cheese);
     }
-    public static MargheritaBuilder builder(){
+    public  MargheritaBuilder builder(){
         return this;
     }
 }
